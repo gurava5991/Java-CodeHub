@@ -14,7 +14,7 @@ class Product{
         this.price = price;
     }
 }
-public class LambdaExpressionWithComparator {
+public class   LambdaExpressionWithComparator {
     public static void main(String[] args) {
         List<Product> productList = new ArrayList<>();
         productList.add(new Product(1,"Dell",25000f));

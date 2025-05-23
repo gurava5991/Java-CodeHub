@@ -1,0 +1,60 @@
+@startuml
+
+!define table(x) class x << (T,#FFAAAA) >>
+!define primaryKey(x) <u>x</u>
+
+' Entity Definitions
+table(Student) {
+  primaryKey(student_id): int
+  name: string
+  email: string
+  major_id: int
+}
+
+table(Professor) {
+  primaryKey(professor_id): int
+  name: string
+  email: string
+  department_id: int
+}
+
+table(Course) {
+  primaryKey(course_id): int
+  title: string
+  credits: int
+  department_id: int
+}
+
+table(Department) {
+  primaryKey(department_id): int
+  name: string
+  office: string
+}
+
+table(Enrollment) {
+  primaryKey(enrollment_id): int
+  student_id: int
+  course_id: int
+  semester: string
+  grade: string
+}
+
+table(Teaches) {
+  primaryKey(teaches_id): int
+  professor_id: int
+  course_id: int
+  semester: string
+}
+
+' Relationships
+Student "1" -- "0..*" Enrollment : enrolls >
+Course "1" -- "0..*" Enrollment : offered in >
+
+Professor "1" -- "0..*" Teaches : teaches >
+Course "1" -- "0..*" Teaches : taught in >
+
+Department "1" -- "0..*" Student : has majors >
+Department "1" -- "0..*" Professor : employs >
+Department "1" -- "0..*" Course : offers >
+
+@enduml

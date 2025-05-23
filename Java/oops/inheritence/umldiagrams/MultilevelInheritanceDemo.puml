@@ -1,0 +1,13 @@
+@startuml
+class Animal{
+    + eat() : void
+}
+class Mammal{
+    + walk() : void
+}
+class Dog{
+    + bark() : void
+}
+Animal --> Mammal
+Mammal --> Dog
+@enduml
